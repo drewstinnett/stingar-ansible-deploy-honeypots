@@ -1,0 +1,25 @@
+---
+version: '3'
+services:
+  fluentbit:
+    image: fluent/fluent-bit
+    links:
+      - fluentd:fluentd
+    volumes:
+      - ./stingar-honeypots/fluent-bit/conf/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+    env_file:
+      - stingar.env
+  cowrie:
+    build:
+      dockerfile: ./honeypots/cowrie/Dockerfile
+      context: ./stingar-honeypots/
+    image: cowrie:ubuntu
+    ports:
+      - "22:2222"
+      - "23:2223"
+    depends_on:
+      - fluentbit
+    links:
+      - fluentbit:fluentbit
+    env_file:
+      - stingar.env

@@ -1,0 +1,18 @@
+---
+
+- name: Create required directories
+  file:
+    path: "{{ stingar_base }}"
+    state: directory
+
+- name: Copy in docker-compose stuff
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ stingar_base }}/{{ item }}"
+  with_items:
+    - "stingar.env"
+    - "docker-compose.yaml"
+
+- name: Start up containers
+  docker_service:
+    project_src: "{{ stingar_base }}"

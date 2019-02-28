@@ -5,6 +5,11 @@
     path: "{{ stingar_base }}"
     state: directory
 
+- name: Download honeypot deployments
+  git:
+    repo: "{{ stingar_hp_repo }}"
+    dest: "{{ stingar_base }}/stingar-ansible-deploy-honeypots"
+
 - name: Copy in docker-compose stuff
   template:
     src: "{{ item }}.j2"

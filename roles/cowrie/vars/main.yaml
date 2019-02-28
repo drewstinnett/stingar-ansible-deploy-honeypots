@@ -1,3 +1,4 @@
 ---
 
 stingar_base: "/srv/stingar"
+stingar_hp_repo: "https://github.com/stingar/stingar-honeypots.git"

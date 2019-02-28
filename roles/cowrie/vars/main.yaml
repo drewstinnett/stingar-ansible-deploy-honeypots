@@ -2,3 +2,4 @@
 
 stingar_base: "/srv/stingar"
 stingar_hp_repo: "https://github.com/stingar/stingar-honeypots.git"
+fluentd_host: "{{ ansible_env['SSH_CLIENT'].split() | first }}"

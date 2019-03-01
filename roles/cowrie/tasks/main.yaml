@@ -7,7 +7,7 @@
 
 - name: Read the raw config info from json
   set_fact:
-    config_info: "{{ config_info_raw | from_json }}"
+    config_info: "{{ config_info_raw.stdout | from_json }}"
 
 - debug:
     var: config_info

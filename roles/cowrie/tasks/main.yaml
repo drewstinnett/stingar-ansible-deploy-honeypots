@@ -1,5 +1,12 @@
 ---
 
+- name: Look up config information
+  shell: curl http://localhost:9200/config/_search | jq .hits.hits[-1]._source
+  register: config_info
+
+- debug:
+    var: config_info
+
 - name: Create required directories
   file:
     path: "{{ stingar_base }}"

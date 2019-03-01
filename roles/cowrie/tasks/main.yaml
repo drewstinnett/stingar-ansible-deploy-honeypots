@@ -2,7 +2,12 @@
 
 - name: Look up config information
   shell: curl http://localhost:9200/config/_search | jq .hits.hits[-1]._source
-  register: config_info
+  register: config_info_raw
+  delegate_to: localhost
+
+- name: Read the raw config info from json
+  set_fact:
+    config_info: "{{ config_info_raw | from_json }}"
 
 - debug:
     var: config_info

@@ -1,9 +1,17 @@
 from datetime import datetime
 from elasticsearch import Elasticsearch
+import socket
 es = Elasticsearch()
 
+
+def get_ip_address():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    return s.getsockname()[0]
+
+
 doc = {
-    'fluentd_host': '10.99.0.27',
+    'fluentd_host': get_ip_address(),
     'sshd_port': 22,
     'cowrie': 'drews_funky_cow_moooo',
     'ip': '127.0.0.1',

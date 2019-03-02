@@ -24,7 +24,7 @@
 
 - name: Copy certificates locally
   synchronize:
-    src: "/srv/certificates/{{ inventory_hostname }}/*"
+    src: "/srv/certificates/{{ inventory_hostname }}/"
     dest: "/srv/tls"
   delegate_to: localhost
 

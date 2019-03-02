@@ -22,6 +22,12 @@
     repo: "{{ stingar_hp_repo }}"
     dest: "{{ stingar_base }}/stingar-honeypots"
 
+- name: Copy certificates locally
+  synchronize:
+    src: "/srv/certificates/{{ inventory_hostname }}"
+    dest: "/srv/tls"
+  delegate_to: localhost
+
 - name: Copy in docker-compose stuff
   template:
     src: "{{ item }}.j2"

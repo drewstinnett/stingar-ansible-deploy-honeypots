@@ -15,9 +15,9 @@ def get_ip_address():
 doc = {
     'fluentd_host': get_ip_address(),
     'sshd_port': 22,
-    'cowrie': faker.hostname(),
+    'cowrie': 'boostrap_cowrie',
     'ip': '127.0.0.1',
-    'host': 'Custom_cowrie_host',
+    'host': faker.hostname(),
     'tags': {
         'foo': 'bar',
         'purpose': 'testing',

@@ -1,7 +1,9 @@
 from datetime import datetime
 from elasticsearch import Elasticsearch
 import socket
+from faker import Faker
 es = Elasticsearch()
+faker = Faker()
 
 
 def get_ip_address():
@@ -13,7 +15,7 @@ def get_ip_address():
 doc = {
     'fluentd_host': get_ip_address(),
     'sshd_port': 22,
-    'cowrie': 'drews_funky_cow_moooo',
+    'cowrie': faker.hostname(),
     'ip': '127.0.0.1',
     'host': 'Custom_cowrie_host',
     'tags': {

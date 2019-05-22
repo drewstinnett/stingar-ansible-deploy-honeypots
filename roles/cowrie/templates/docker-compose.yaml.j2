@@ -18,6 +18,6 @@ services:
     depends_on:
       - fluentbit
     links:
-      - fluentbit
+      - fluentbit:fluentbit
     env_file:
       - stingar.env
